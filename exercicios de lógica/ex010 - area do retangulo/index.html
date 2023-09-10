@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Retângulo</title>
+    <style>
+      body {
+        height: 97vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+
+        background-color: rgba(0, 0, 0, 0.63);
+      }
+
+      .res {
+        height: 450px;
+        width: 500px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        /* align-content: center; */
+        align-items: center;
+
+        border-radius: 10px;
+        background-color: gray;
+        box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.486);
+      }
+      .item {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        /* align-content: center; */
+        align-items: center;
+
+        color: whitesmoke;
+        font: 20px Arial, sans-serif;
+        border-radius: 10px;
+      }
+      .item > .unic {
+        padding: 1rem;
+        border-bottom: 1px solid black;
+      }
+      button {
+        padding: 0.6rem;
+
+        font-weight: bold;
+        color: white;
+        border-radius: 5px;
+        border: none;
+        background-color: darkgrey;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="res"></div>
+
+    <script>
+      // INICIO
+      const result = document.querySelector(".res");
+
+      otherAccount();
+
+      //FUNÇÃO que faz as contas sempre sem precisar reiniciar a página, apenas clicando no botão.
+      function otherAccount() {
+        number1 = Number(prompt("Me fale a altura!"));
+        number2 = Number(prompt("Me fale a largura!"));
+
+        if (isNaN(number1) && isNaN(number2)) {
+          alert("Digite um número válido!!");
+        }
+        //FAZENDO a chamada para a função de calculo e passando os parametros
+        try {
+          let newAccount = calculoRetangulo(number1, number2);
+          writeOnScreen(newAccount);
+        } catch (e) {
+          alert(e);
+        }
+        //FUNÇÃO para escrever/atualizar o resultado
+      }
+
+      //FUNÇÃO do calculo que recebe os parametros
+      function calculoRetangulo(number1, number2) {
+        if (number1 === undefined || number2 === undefined) {
+          throw new Error("Atribua dois(2) valores para operação");
+          return accountResult;
+        }
+        if (isNaN(number1) || isNaN(number2)) {
+          throw new Error("Digite um número válido!!");
+          return accountResult;
+        }
+
+        let accountResult = number1 * number2;
+        return accountResult;
+      }
+
+      function writeOnScreen(message) {
+        result.innerHTML = `
+        <div class="item">
+          <p class="unic">A área total do seu retângulo é: </p>
+          <p> ${message} </p>
+            <button onclick="otherAccount()">Calcule a área
+        </button>
+        </div>
+            `;
+      }
+    </script>
+  </body>
+</html>
